@@ -56,8 +56,8 @@ async def start(bot, message):
                         ]
                     )
                 )
-            except:
-                None
+            except Exception as e:
+                print(e)
         except:
             await message.reply('The media you are trying to get is invalid.')
             
