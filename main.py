@@ -19,7 +19,7 @@ Bot = Client(
     api_hash=API_HASH
 )
 
-@Bot.on_message((filters.photo & filters.video & filters.voice & filters.document & filters.animation & filters.audio & filters.sticker))
+@Bot.on_message(filters.command('hello') & (filters.photo & filters.video & filters.voice & filters.document & filters.animation & filters.audio & filters.sticker))
 async def hagadmansa(bot, message):
     hagadmansa = await message.reply("`Processing...`")
     media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
