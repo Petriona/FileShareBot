@@ -56,7 +56,7 @@ async def start(bot, message):
         except:
             await message.reply('The media you are trying to get is invalid.')'''    
             
-@Bot.on_message(filters.private & filters.incoming & filters.forwarded & (filters.photo & filters.video & filters.voice & filters.document & filters.animation & filters.audio & filters.sticker))
+@Bot.on_message(filters.private)
 async def hagadmansa(bot, message):
     hagadmansa = await message.reply("`Processing...`")
     media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
