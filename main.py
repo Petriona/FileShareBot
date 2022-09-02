@@ -51,8 +51,11 @@ async def start(bot, message):
                     ]
                 )
             )
-            media = replied.photo or replied.video or replied.voice or replied.document or replied.animation or replied.audio or replied.sticker 
-            await send.edit(media.file_name)
+            try:
+                media = replied.photo or replied.video or replied.voice or replied.document or replied.animation or replied.audio or replied.sticker 
+                await send.edit(media.file_name)
+             except:
+                None
         except:
             await message.reply('The media you are trying to get is invalid.')
             
@@ -65,8 +68,7 @@ async def hagadmansa(bot, message):
       return await hagadmansa.edit('Send me any photo, video, voice, audio, document, sticker, animation or videonote to get a permanent link.')
     
     media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
-    link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)}"
-    print(link)
+    link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)[0]}"
     share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
     await hagadmansa.edit(
         text=f"Here is your link: {link}",
