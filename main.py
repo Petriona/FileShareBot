@@ -54,7 +54,7 @@ async def start(bot, message):
             try:
                 media = replied.photo or replied.video or replied.voice or replied.document or replied.animation or replied.audio or replied.sticker 
                 await send.edit(media.file_name)
-             except:
+            except:
                 None
         except:
             await message.reply('The media you are trying to get is invalid.')
