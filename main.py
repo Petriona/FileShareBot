@@ -58,7 +58,12 @@ async def start(bot, message):
             
 @Bot.on_message(filters.private)
 async def hagadmansa(bot, message):
+    
     hagadmansa = await message.reply("`Processing...`")
+    
+    if message.text:
+      return await message.edit('Send me any photo, video, voice, audio, document, sticker, animation or videonote to get a permanent link.')
+    
     media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
     link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)}"
     share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
