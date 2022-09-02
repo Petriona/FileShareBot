@@ -19,7 +19,7 @@ Bot = Client(
     api_hash=API_HASH
 )
 
-'''@Bot.on_message(filters.command('start'))
+@Bot.on_message(filters.command('start'))
 async def start(bot, message):
     if len(message.command) == 1:
         await message.reply(
@@ -54,7 +54,7 @@ async def start(bot, message):
             media = replied.photo or replied.video or replied.voice or replied.document or replied.animation or replied.audio or replied.sticker 
             await send.edit(media.file_name)
         except:
-            await message.reply('The media you are trying to get is invalid.')'''    
+            await message.reply('The media you are trying to get is invalid.')
             
 @Bot.on_message(filters.private)
 async def hagadmansa(bot, message):
