@@ -7,6 +7,8 @@ API_ID = int(environ.get("API_ID"))
 API_HASH = environ.get("API_HASH")
 BOT_USERNAME = environ.get("BOT_USERNAME")
 
+print("----------Starting Bot----------")
+
 Bot = Client(
     "File Store Bot",
     bot_token=BOT_TOKEN,
@@ -59,7 +61,7 @@ async def hagadmansa(bot, message):
     share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
     await hagadmansa.edit(
         text=f"Here is your link: {link}",
-        reply_markup=InlineKeyboardMarkupp
+        reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton('Share now', url=share)
@@ -69,3 +71,5 @@ async def hagadmansa(bot, message):
     )
     
 Bot.run()
+
+print("----------Bot Started----------")
