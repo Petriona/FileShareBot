@@ -19,23 +19,6 @@ Bot = Client(
     api_hash=API_HASH
 )
 
-@Bot.on_message(filters.command('hello') & filters.private & filters.incoming & filters.forwarded & (filters.photo & filters.video & filters.voice & filters.document & filters.animation & filters.audio & filters.sticker))
-async def hagadmansa(bot, message):
-    hagadmansa = await message.reply("`Processing...`")
-    media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
-    link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)}"
-    share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
-    await hagadmansa.edit(
-        text=f"Here is your link: {link}",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('Share now', url=share)
-                ]
-            ]
-        )
-    )
-
 @Bot.on_message(filters.command('start'))
 async def start(bot, message):
     if len(message.command) == 1:
@@ -72,7 +55,24 @@ async def start(bot, message):
             await send.edit(media.file_name)
         except:
             await message.reply('The media you are trying to get is invalid.')       
-    
+            
+@Bot.on_message(filters.command('hello') & filters.private & filters.incoming & filters.forwarded & (filters.photo & filters.video & filters.voice & filters.document & filters.animation & filters.audio & filters.sticker))
+async def hagadmansa(bot, message):
+    hagadmansa = await message.reply("`Processing...`")
+    media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
+    link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)}"
+    share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
+    await hagadmansa.edit(
+        text=f"Here is your link: {link}",
+        reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton('Share now', url=share)
+                ]
+            ]
+        )
+    )
+
 Bot.run()
 
 print("----------Bot Started----------")
