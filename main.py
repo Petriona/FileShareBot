@@ -69,7 +69,7 @@ async def hagadmansa(bot, message):
     if message.text:
       return await hagadmansa.edit('Send me any photo, video, voice, audio, document, sticker, animation or videonote to get a permanent link.')
     
-    media = message.photo or message.video or message.voice or message.audio or message.document or message.sticker or message.animation message.videonote
+    media = message.photo or message.video or message.voice or message.audio or message.document or message.sticker or message.animation or message.videonote
     link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)[0]}"
     share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
     await hagadmansa.edit(
