@@ -39,21 +39,23 @@ async def start(bot, message):
         )
     elif len(message.command) == 2:
         try:
-            link = f"https://t.me/{BOT_USERNAME}?start={message.command[1]}"
-            share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
             send = await message.reply_cached_media(
-                file_id=message.command[1],
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton('Share now', url=share)
-                        ]
-                    ]
-                )
+                file_id = message.command[1]
             )
             try:
-                media = replied.photo or replied.video or replied.voice or replied.document or replied.animation or replied.audio or replied.sticker 
-                await send.edit(media.file_name)
+                link = f"https://t.me/{BOT_USERNAME}?start={message.command[1]}"
+                share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
+                media = replied.photo or replied.video or replied.voice or replied.audio or replied.document or replied.sticker or replied.animation or replied.videonote
+                await send.edit(
+                    text = media.file_name,
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton('Share now', url=share)
+                            ]
+                        ]
+                    )
+                )
             except:
                 None
         except:
@@ -67,7 +69,7 @@ async def hagadmansa(bot, message):
     if message.text:
       return await hagadmansa.edit('Send me any photo, video, voice, audio, document, sticker, animation or videonote to get a permanent link.')
     
-    media = message.photo or message.video or message.voice or message.document or message.animation or message.audio or message.sticker 
+    media = message.photo or message.video or message.voice or message.audio or message.document or message.sticker or message.animation message.videonote
     link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)[0]}"
     share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
     await hagadmansa.edit(
