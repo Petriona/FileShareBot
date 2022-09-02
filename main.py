@@ -45,7 +45,7 @@ async def start(bot, message):
             try:
                 link = f"https://t.me/{BOT_USERNAME}?start={message.command[1]}"
                 share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
-                media = replied.photo or replied.video or replied.voice or replied.audio or replied.document or replied.sticker or replied.animation
+                media = send.photo or send.video or send.voice or send.audio or send.document or send.sticker or send.animation
                 await send.edit(
                     text = media.file_name,
                     reply_markup=InlineKeyboardMarkup(
