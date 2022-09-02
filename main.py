@@ -23,7 +23,7 @@ Bot = Client(
 async def start(bot, message):
     if len(message.command) == 1:
         await message.reply(
-            text=f"Hello {message.from_user.mention}, I am a Powerful File Store Bot devoloped by @Hagadmansa.\n\nJust send me any photo, video, voice, audio, document, sticker, animation or videonote, i'll share you you it's permanent link.",
+            text=f"Hello {message.from_user.mention}, I am a Powerful File Store Bot devoloped by @Hagadmansa.\n\nJust send me any photo, video, voice, audio, document, sticker or animation, i'll share you you it's permanent link.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -45,7 +45,7 @@ async def start(bot, message):
             try:
                 link = f"https://t.me/{BOT_USERNAME}?start={message.command[1]}"
                 share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
-                media = replied.photo or replied.video or replied.voice or replied.audio or replied.document or replied.sticker or replied.animation or replied.videonote
+                media = replied.photo or replied.video or replied.voice or replied.audio or replied.document or replied.sticker or replied.animation
                 await send.edit(
                     text = media.file_name,
                     reply_markup=InlineKeyboardMarkup(
@@ -67,9 +67,9 @@ async def hagadmansa(bot, message):
     hagadmansa = await message.reply("`Processing...`")
     
     if message.text:
-      return await hagadmansa.edit('Send me any photo, video, voice, audio, document, sticker, animation or videonote to get a permanent link.')
+      return await hagadmansa.edit('Send me any photo, video, voice, audio, document, sticker or animation to get a permanent link.')
     
-    media = message.photo or message.video or message.voice or message.audio or message.document or message.sticker or message.animation or message.videonote
+    media = message.photo or message.video or message.voice or message.audio or message.document or message.sticker or message.animation 
     link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)[0]}"
     share = f"https://t.me/share/url?url={link}&text=Click%20on%20link%20to%20get%20the%20file%20now,%20Join%20@Hagadmansa"
     await hagadmansa.edit(
