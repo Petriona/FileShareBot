@@ -38,7 +38,7 @@ async def start(bot, message):
             )
         )
     elif len(message.command) == 2:
-        try:
+     #   try:
             send = await message.reply_cached_media(
                 file_id = message.command[1]
             )
@@ -58,8 +58,8 @@ async def start(bot, message):
                 )
             except:
                 None
-        except:
-            await message.reply('The media you are trying to get is invalid.')
+   #     except:
+       #     await message.reply('The media you are trying to get is invalid.')
             
 @Bot.on_message(filters.private)
 async def hagadmansa(bot, message):
