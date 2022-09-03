@@ -38,7 +38,7 @@ async def start(bot, message):
             )
         )
     elif len(message.command) == 2:
-     #   try:
+        try:
             send = await message.reply_cached_media(
                 file_id = message.command[1]
             )
@@ -58,8 +58,8 @@ async def start(bot, message):
                 )
             except:
                 None
-   #     except:
-       #     await message.reply('The media you are trying to get is invalid.')
+        except:
+            await message.reply('The media you are trying to get is invalid.')
             
 @Bot.on_message(filters.private)
 async def hagadmansa(bot, message):
@@ -68,6 +68,9 @@ async def hagadmansa(bot, message):
     
     if message.text:
       return await hagadmansa.edit('Send me any photo, video, voice, audio, document, sticker or animation to get a permanent link.')
+
+    if message.photo:
+      return await hagadmansa.edit('Photos are not supported currently, send them as document to get a permanent link.')
     
     media = message.photo or message.video or message.voice or message.audio or message.document or message.sticker or message.animation 
     link = f"https://t.me/{BOT_USERNAME}?start={new_file_id(media.file_id)[0]}"
